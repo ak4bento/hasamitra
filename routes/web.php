@@ -48,3 +48,5 @@ Route::resource('shiftSchedules', App\Http\Controllers\ShiftScheduleController::
 Route::resource('salaries', App\Http\Controllers\SalariesController::class);
 
 Route::get('/data/deparment/{id}', [App\Http\Controllers\EmployeeController::class, 'getDepartment']);
+
+Route::get('/data/organizational/{id}', [App\Http\Controllers\OrganizationalController::class, 'getOrganizational']);

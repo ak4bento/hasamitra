@@ -32,7 +32,8 @@ class Organizational extends Model
         'id_company',
         'id_department',
         'job_title',
-        'id_manager_org'
+        'id_manager_org',
+        'share',
     ];
 
     /**
@@ -45,7 +46,8 @@ class Organizational extends Model
         'id_company' => 'integer',
         'id_department' => 'integer',
         'job_title' => 'string',
-        'id_manager_org' => 'integer'
+        'id_manager_org' => 'integer',
+        'share' => 'string'
     ];
 
     /**
@@ -57,7 +59,7 @@ class Organizational extends Model
         'id_company' => 'required|integer',
         'id_department' => 'required|integer',
         'job_title' => 'required|string|max:32',
-        'id_manager_org' => 'nullable|integer'
+        'id_manager_org' => 'nullable|integer',
     ];
 
     public function commpany()

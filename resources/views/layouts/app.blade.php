@@ -166,6 +166,7 @@
             "autoWidth": false,
             "buttons": ["colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": true,

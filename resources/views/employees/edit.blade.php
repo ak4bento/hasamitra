@@ -1,5 +1,23 @@
 @extends('layouts.app')
 
+@push('page_scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#department').on('change', function() {
+        console.log(this.value);
+        $.getJSON("/data/deparment/" + this.value, function(result){
+            $("#organization").find('option').remove().end();
+            $.each(result, function(i, field){
+                // console.log("Ini field = "+field.department);
+                $("#organization").append(`<option value="${field.id}">${field.department} - ${field.job_title}</option>`);
+                // $("#organization").append(field + " ");
+            });
+        });
+    });
+});
+</script>
+@endpush
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">

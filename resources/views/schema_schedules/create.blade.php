@@ -1,5 +1,42 @@
 @extends('layouts.app')
 
+@push('page_scripts')
+<script>
+    $(function () {
+        //Timepicker
+        $('#timepicker1').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timepicker2').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timepicker3').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timepicker4').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timepicker5').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timepicker6').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timepicker7').datetimepicker({
+            format: 'LT'
+        });
+    });
+</script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+@endpush
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">

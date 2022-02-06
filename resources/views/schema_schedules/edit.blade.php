@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@push('page_scripts')
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+@endpush
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">

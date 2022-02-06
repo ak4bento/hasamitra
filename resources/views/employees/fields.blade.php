@@ -4,18 +4,28 @@
 
     @php
     $items = App\Models\Company::pluck('name', 'id');
+    $items->prepend('Please Select Company', '');
     @endphp
     
-    {!! Form::open(['route' => 'employees.store']) !!}
-        {!! Form::select('company', $items, null, ['id' => 'department','class' => 'js-example-basic-multiple form-control']) !!}
-    {!! Form::close() !!}
+    {!! Form::select('department', $items, null, ['id' => 'department','class' => 'js-example-basic-multiple form-control']) !!}
 </div>
 
 <!-- Id Organization Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('id_organization', 'Organization:') !!}
-    <select name="organization" id="organization" class="form-control">
+    <select name="id_organization" id="organization" class="form-control">
     </select>
+</div>
+
+<!-- Id Organization Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('id_master_schema', 'Master Schema:') !!}
+    @php
+    $items = App\Models\MasterSchema::pluck('initial_schema', 'id');
+    $items->prepend('Please Select Master Schema', '');
+    @endphp
+    
+    {!! Form::select('id_master_schema', $items, null, ['id' => 'id_master_schema','class' => 'js-example-basic-multiple form-control']) !!}
 </div>
 
 <!-- Nik Field -->

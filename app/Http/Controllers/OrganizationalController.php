@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Models\Organizational;
+use DB;
 
 class OrganizationalController extends AppBaseController
 {
@@ -44,6 +45,18 @@ class OrganizationalController extends AppBaseController
     public function create()
     {
         return view('organizationals.create');
+    }
+
+    public function getOrganizational($id)
+    {
+        $data = DB::table('tb_organizational_structure74')
+                ->join('tb_company74', 'tb_organizational_structure74.id_company', '=', 'tb_company74.id')
+                ->select('tb_organizational_structure74.*', 'tb_company74.name as company_name')
+                ->where('id_company', $id)
+                ->orWhere('share', 'Ya')
+                ->get();
+
+        return json_encode($data);
     }
 
     /**

@@ -1,5 +1,23 @@
 @extends('layouts.app')
 
+@push('page_scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#id_company').on('change', function() {
+        console.log(this.value);
+        $.getJSON("/data/organizational/" + this.value, function(result){
+            $("#id_manager_org").find('option').remove().end();
+            $.each(result, function(i, field){
+                // console.log("Ini field = "+field.department);
+                $("#id_manager_org").append(`<option value="${field.id}">${field.company_name} - ${field.job_title}</option>`);
+                // $("#organization").append(field + " ");
+            });
+        });
+    });
+});
+</script>
+@endpush
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">

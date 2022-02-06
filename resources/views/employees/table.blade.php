@@ -19,8 +19,8 @@
                 <td>{{ $employee->name }}</td>
                 <td>{{ $employee->phone }}</td>
                 <td>{{ $employee->gender }}</td>
-                <td>{{ $employee->id_employee_approv_permission1 }}</td>
-                <td>{{ $employee->id_employee_approv_permission2 }}</td>
+                <td>{{ App\Models\Employee::find($employee->id_employee_approv_permission1)->name ?? '' }}</td>
+                <td>{{ App\Models\Employee::find($employee->id_employee_approv_permission2)->name ?? '' }}</td>
                 <td>{{ $employee->imei }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['employees.destroy', $employee->id], 'method' => 'delete']) !!}

@@ -70,8 +70,8 @@ class EmployeeController extends AppBaseController
         $input = $request->all();
 
         if(!isset($input['company'])) {
+            $input['pass'] = bcrypt($input['nik']);
             $employee = $this->employeeRepository->create($input);
-
             Flash::success('Employee saved successfully.');
         } else {
             $employees = DB::table('tb_employee')
