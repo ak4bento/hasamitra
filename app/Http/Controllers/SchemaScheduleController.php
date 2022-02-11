@@ -63,9 +63,10 @@ class SchemaScheduleController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateSchemaScheduleRequest $request)
+    public function store(Request $request)
     {
         $input = $request->all();
+        dd($input);
 
         $schemaSchedule = $this->schemaScheduleRepository->create($input);
 

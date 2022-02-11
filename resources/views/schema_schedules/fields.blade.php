@@ -30,7 +30,7 @@
             {!! Form::label('time_in', 'Time In:') !!}
             
             <div class="input-group date" id="timepicker1" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker1"/>
+                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker1" name="time_in[1]"/>
                 <div class="input-group-append" data-target="#timepicker1" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                 </div>
@@ -75,7 +75,7 @@
             {!! Form::label('time_in', 'Time In:') !!}
             
             <div class="input-group date" id="timepicker2" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker2"/>
+                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker2" name="time_in[2]"/>
                 <div class="input-group-append" data-target="#timepicker2" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                 </div>
@@ -120,7 +120,7 @@
             {!! Form::label('time_in', 'Time In:') !!}
             
             <div class="input-group date" id="timepicker3" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker3"/>
+                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker3" name="time_in[3]"/>
                 <div class="input-group-append" data-target="#timepicker3" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                 </div>
@@ -165,7 +165,7 @@
             {!! Form::label('time_in', 'Time In:') !!}
             
             <div class="input-group date" id="timepicker4" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker4"/>
+                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker4" name="time_in[4]"/>
                 <div class="input-group-append" data-target="#timepicker4" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                 </div>
@@ -210,7 +210,7 @@
             {!! Form::label('time_in', 'Time In:') !!}
             
             <div class="input-group date" id="timepicker5" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker5"/>
+                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker5" name="time_in[5]"/>
                 <div class="input-group-append" data-target="#timepicker5" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                 </div>
@@ -255,7 +255,7 @@
             {!! Form::label('time_in', 'Time In:') !!}
             
             <div class="input-group date" id="timepicker6" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker6"/>
+                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker6" name="time_in[6]"/>
                 <div class="input-group-append" data-target="#timepicker6" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                 </div>
@@ -300,7 +300,7 @@
             {!! Form::label('time_in', 'Time In:') !!}
             
             <div class="input-group date" id="timepicker7" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker7"/>
+                <input type="text" class="form-control datetimepicker-input" data-target="#timepicker7" name="time_in[7]"/>
                 <div class="input-group-append" data-target="#timepicker7" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                 </div>
