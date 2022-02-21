@@ -32,8 +32,9 @@ class EmployeeController extends AppBaseController
     public function index(Request $request)
     {
         $employees = $this->employeeRepository->all();
+        $view = 'employees.index';
 
-        return view('employees.index')
+        return view($view)
             ->with('employees', $employees);
     }
 
