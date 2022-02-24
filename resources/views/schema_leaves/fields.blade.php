@@ -1,7 +1,18 @@
-<!-- Id Master Schema Field -->
+{{-- <!-- Id Master Schema Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('id_master_schema', 'Id Master Schema:') !!}
     {!! Form::number('id_master_schema', null, ['class' => 'form-control']) !!}
+</div> --}}
+<!-- Id Master Schema Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('id_master_schema', 'Master Schema:') !!}
+    {{-- <!-- {!! Form::number('id_master_schema', null, ['class' => 'form-control']) !!} --> --}}
+    
+    @php
+    $items = App\Models\MasterSchema::pluck('initial_schema', 'id');
+    @endphp
+
+    {!! Form::select('id_master_schema', $items, null, ['class' => 'js-example-basic-multiple form-control']) !!}
 </div>
 
 <!-- Gender Field -->

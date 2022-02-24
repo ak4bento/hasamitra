@@ -31,6 +31,34 @@
         $('#timepicker7').datetimepicker({
             format: 'LT'
         });
+
+        $('#timeout1').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timeout2').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timeout3').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timeout4').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timeout5').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timeout6').datetimepicker({
+            format: 'LT'
+        });
+        //Timepicker
+        $('#timeout7').datetimepicker({
+            format: 'LT'
+        });
     });
 </script>
 <!-- Tempusdominus Bootstrap 4 -->

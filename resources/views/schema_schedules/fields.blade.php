@@ -40,7 +40,13 @@
         <!-- Time Out Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('time_out', 'Time Out:') !!}
-            {!! Form::text('time_out', null, ['class' => 'form-control datetimepicker-input']) !!}
+            
+            <div class="input-group date" id="timeout1" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#timeout1" name="time_out[1]"/>
+                <div class="input-group-append" data-target="#timeout1" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                </div>
+            </div>
         </div>
         
         <!-- Late Day Field -->
@@ -85,7 +91,13 @@
         <!-- Time Out Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('time_out', 'Time Out:') !!}
-            {!! Form::text('time_out', null, ['class' => 'form-control']) !!}
+            
+            <div class="input-group date" id="timeout2" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#timeout2" name="time_out[2]"/>
+                <div class="input-group-append" data-target="#timeout2" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                </div>
+            </div>
         </div>
         
         <!-- Late Day Field -->
@@ -130,7 +142,13 @@
         <!-- Time Out Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('time_out', 'Time Out:') !!}
-            {!! Form::text('time_out', null, ['class' => 'form-control']) !!}
+            
+            <div class="input-group date" id="timeout3" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#timeout3" name="time_out[3]"/>
+                <div class="input-group-append" data-target="#timeout3" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                </div>
+            </div>
         </div>
         
         <!-- Late Day Field -->
@@ -175,7 +193,13 @@
         <!-- Time Out Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('time_out', 'Time Out:') !!}
-            {!! Form::text('time_out', null, ['class' => 'form-control']) !!}
+            
+            <div class="input-group date" id="timeout4" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#timeout4" name="time_out[4]"/>
+                <div class="input-group-append" data-target="#timeout4" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                </div>
+            </div>
         </div>
         
         <!-- Late Day Field -->
@@ -220,7 +244,13 @@
         <!-- Time Out Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('time_out', 'Time Out:') !!}
-            {!! Form::text('time_out', null, ['class' => 'form-control']) !!}
+            
+            <div class="input-group date" id="timeout5" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#timeout5" name="time_out[5]"/>
+                <div class="input-group-append" data-target="#timeout5" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                </div>
+            </div>
         </div>
         
         <!-- Late Day Field -->
@@ -265,7 +295,13 @@
         <!-- Time Out Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('time_out', 'Time Out:') !!}
-            {!! Form::text('time_out', null, ['class' => 'form-control']) !!}
+            
+            <div class="input-group date" id="timeout6" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#timeout6" name="time_out[6]"/>
+                <div class="input-group-append" data-target="#timeout6" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                </div>
+            </div>
         </div>
         
         <!-- Late Day Field -->
@@ -310,7 +346,13 @@
         <!-- Time Out Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('time_out', 'Time Out:') !!}
-            {!! Form::text('time_out', null, ['class' => 'form-control']) !!}
+            
+            <div class="input-group date" id="timeout7" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#timeout7" name="time_out[7]"/>
+                <div class="input-group-append" data-target="#timeout7" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                </div>
+            </div>
         </div>
         
         <!-- Late Day Field -->

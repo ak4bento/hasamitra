@@ -66,9 +66,19 @@ class SchemaScheduleController extends AppBaseController
     public function store(Request $request)
     {
         $input = $request->all();
-        dd($input);
+        // dd($input);
 
-        $schemaSchedule = $this->schemaScheduleRepository->create($input);
+        for ($i=1; $i <= 7; $i++) { 
+            $schedule = new SchemaSchedule;
+            $schedule['id_master_schema'] = $input['id_master_schema'];
+            $schedule['day'] = $i;
+            $schedule['time_in'] = isset($input['day'][$i]) ? date("H:i", strtotime($input['time_in'][$i])) : null;
+            $schedule['time_out'] = isset($input['day'][$i]) ? date("H:i", strtotime($input['time_out'][$i])) : null;
+            $schedule['late_day'] = isset($input['late_day'][$i]) ? 'Y' : 'N';
+            $schedule->save();
+        }
+
+        // $schemaSchedule = $this->schemaScheduleRepository->create($input);
 
         Flash::success('Schema Schedule saved successfully.');
 

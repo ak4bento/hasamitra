@@ -2,22 +2,22 @@
     <table class="table" id="example2">
         <thead>
         <tr>
-            <th>Id Master Schema</th>
-        <th>Gender</th>
-        <th>Info</th>
-        <th>Quantify Saldo</th>
-        <th>Saldo</th>
+            <th>Master Schema</th>
+            <th>Gender</th>
+            <th>Info</th>
+            <th>Quantify Saldo</th>
+            <th>Saldo</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
         @foreach($schemaLeaves as $schemaLeave)
             <tr>
-                <td>{{ $schemaLeave->id_master_schema }}</td>
-            <td>{{ $schemaLeave->gender }}</td>
-            <td>{{ $schemaLeave->info }}</td>
-            <td>{{ $schemaLeave->quantify_saldo }}</td>
-            <td>{{ $schemaLeave->saldo }}</td>
+                <td>{{ App\Models\MasterSchema::find($schemaLeave->id_master_schema)->initial_schema }}</td>
+                <td>{{ $schemaLeave->gender }}</td>
+                <td>{{ $schemaLeave->info }}</td>
+                <td>{{ $schemaLeave->quantify_saldo }}</td>
+                <td>{{ $schemaLeave->saldo }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['schemaLeaves.destroy', $schemaLeave->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

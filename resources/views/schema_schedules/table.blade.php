@@ -18,16 +18,19 @@
             <tr>
                 <td>{{ App\Models\MasterSchema::find($schemaSchedule->id_master_schema)->initial_schema }}</td>
                 @foreach(App\Models\SchemaSchedule::where('id_master_schema',$schemaSchedule->id_master_schema)->get() as $result)
-                <td>{{ $result->time_in }} - {{ $result->time_out }}</td>
+                @if (!is_null($result->time_in) && date("H:i", strtotime($result->time_in)) != '00:00')
+                <td>{{ date("H:i", strtotime($result->time_in)) }} - <br>{{ date("H:i", strtotime($result->time_out)) }}</td>
+                @else
+                <td>Libur</td>
+                @endif
                 @endforeach
                 <td width="120">
                     {!! Form::open(['route' => ['schemaSchedules.destroy', $schemaSchedule->id_master_schema], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('schemaSchedules.edit', [$schemaSchedule->id_master_schema]) }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i>
+                        <a href="{{ route('schemaSchedules.edit', [$schemaSchedule->id_master_schema]) }}" class='btn btn-default btn-xs'>
+                            <i class="far fa-edit"></i> Edit
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {{-- {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!} --}}
                     </div>
                     {!! Form::close() !!}
                 </td>
