@@ -2,22 +2,22 @@
     <table class="table" id="example2">
         <thead>
         <tr>
-            <th>Id Employee</th>
-        <th>Status Shift</th>
-        <th>Day</th>
-        <th>In Hour</th>
-        <th>Out Hour</th>
+            <th>Employee</th>
+            <th>Status Shift</th>
+            <th>Day</th>
+            <th>In Hour</th>
+            <th>Out Hour</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
         @foreach($shiftSchedules as $shiftSchedule)
             <tr>
-                <td>{{ $shiftSchedule->id_employee }}</td>
-            <td>{{ $shiftSchedule->status_shift }}</td>
-            <td>{{ $shiftSchedule->day }}</td>
-            <td>{{ $shiftSchedule->in_hour }}</td>
-            <td>{{ $shiftSchedule->out_hour }}</td>
+                <td>{{ App\Models\Employee::find($shiftSchedule->id_employee)->name ?? '' }}</td>
+                <td>{{ $shiftSchedule->status_shift }}</td>
+                <td>{{ $shiftSchedule->day }}</td>
+                <td>{{ $shiftSchedule->in_hour }}</td>
+                <td>{{ $shiftSchedule->out_hour }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['shiftSchedules.destroy', $shiftSchedule->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

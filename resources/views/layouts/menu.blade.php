@@ -93,11 +93,11 @@
         </p>
     </a>
 </li>
-<li class="nav-item">
+{{-- <li class="nav-item">
     <a href="{{ route('salaries.index') }}" class="nav-link {{ Request::is('salaries') ? 'active' : '' }}">
         <i class="nav-icon fas fa-calculator"></i>
         <p>
             Salaries
         </p>
     </a>
-</li>
+</li> --}}
