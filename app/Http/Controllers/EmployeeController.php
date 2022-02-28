@@ -98,6 +98,7 @@ class EmployeeController extends AppBaseController
      */
     public function show($id)
     {
+        Employee::find(1);
         $employee = $this->employeeRepository->find($id);
 
         if (empty($employee)) {

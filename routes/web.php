@@ -35,7 +35,7 @@ Route::resource('organizationals', App\Http\Controllers\OrganizationalController
 
 Route::resource('employees', App\Http\Controllers\EmployeeController::class);
 Route::get('employees/approve/{id}/edit', [App\Http\Controllers\EmployeeController::class, 'approve'])->name('employees.approve');
-Route::pacth('employees/approve/{id}', [App\Http\Controllers\EmployeeController::class, 'approveUpdate'])->name('employees.approveUpdate');
+Route::patch('employees/approve/{id}', [App\Http\Controllers\EmployeeController::class, 'approveUpdate'])->name('employees.approveUpdate');
 
 Route::resource('schemaSchedules', App\Http\Controllers\SchemaScheduleController::class);
 
@@ -51,3 +51,9 @@ Route::resource('salaries', App\Http\Controllers\SalariesController::class);
 Route::get('/data/deparment/{id}', [App\Http\Controllers\EmployeeController::class, 'getDepartment']);
 
 Route::get('/data/organizational/{id}', [App\Http\Controllers\OrganizationalController::class, 'getOrganizational']);
+
+
+Route::resource('admins', App\Http\Controllers\AdminController::class);
+
+
+Route::resource('attendances', App\Http\Controllers\AttendanceController::class);

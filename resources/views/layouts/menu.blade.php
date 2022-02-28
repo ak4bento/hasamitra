@@ -7,6 +7,20 @@
         </p>
     </a>
 </li>
+
+@role('superadmin')
+<li class="nav-header">Account</li>
+
+<li class="nav-item">
+    <a href="{{ route('admins.index') }}" class="nav-link {{ Request::is('admins') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-user"></i>
+        <p>
+            Accounts Admin
+        </p>
+    </a>
+</li>
+@endrole
+
 <li class="nav-header">Office</li>
 <li class="nav-item">
     <a href="{{ route('companies.index') }}" class="nav-link {{ Request::is('companies') ? 'active' : '' }}">
@@ -92,11 +106,22 @@
     </ul>
 </li>
 
+@role('superadmin')
 <li class="nav-item">
     <a href="{{ route('salaries.index') }}" class="nav-link {{ Request::is('salaries') ? 'active' : '' }}">
         <i class="nav-icon fas fa-calculator"></i>
         <p>
             * Salaries
+        </p>
+    </a>
+</li>
+@endrole
+
+<li class="nav-item">
+    <a href="{{ route('attendances.index') }}" class="nav-link {{ Request::is('attendances') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calculator"></i>
+        <p>
+            * Attendances
         </p>
     </a>
 </li>

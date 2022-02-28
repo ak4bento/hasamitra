@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
+use App\Models\Company;
+use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'attendances' => Attendance::whereDate('created_at', Carbon::today())->get(),
+            'employees' => Employee::all(),
+            'company' => Company::all(),
+        ]);
     }
 }
