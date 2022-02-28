@@ -34,7 +34,8 @@ Route::resource('organizationals', App\Http\Controllers\OrganizationalController
 
 
 Route::resource('employees', App\Http\Controllers\EmployeeController::class);
-
+Route::get('employees/approve/{id}/edit', [App\Http\Controllers\EmployeeController::class, 'approve'])->name('employees.approve');
+Route::pacth('employees/approve/{id}', [App\Http\Controllers\EmployeeController::class, 'approveUpdate'])->name('employees.approveUpdate');
 
 Route::resource('schemaSchedules', App\Http\Controllers\SchemaScheduleController::class);
 

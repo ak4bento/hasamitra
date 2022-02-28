@@ -6,6 +6,7 @@ use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Repositories\EmployeeRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -175,6 +176,44 @@ class EmployeeController extends AppBaseController
         $this->employeeRepository->delete($id);
 
         Flash::success('Employee deleted successfully.');
+
+        return redirect(route('employees.index'));
+    }
+
+    public function approve($id)
+    {
+        $employee = $this->employeeRepository->find($id);
+
+        if (empty($employee)) {
+            Flash::error('Employee not found');
+
+            return redirect(route('employees.index'));
+        }
+
+        return view('employees.approve')->with('employee', $employee);
+    }
+
+    /**
+     * Update the specified Employee in storage.
+     *
+     * @param int $id
+     * @param UpdateEmployeeRequest $request
+     *
+     * @return Response
+     */
+    public function approveUpdate($id, Request $request)
+    {
+        $employee = $this->employeeRepository->find($id);
+
+        if (empty($employee)) {
+            Flash::error('Employee not found');
+
+            return redirect(route('employees.index'));
+        }
+
+        $employee = $this->employeeRepository->update($request->all(), $id);
+
+        Flash::success('Employee Approve successfully.');
 
         return redirect(route('employees.index'));
     }

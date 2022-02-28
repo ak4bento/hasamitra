@@ -1,9 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ url('/home') }}" class="brand-link">
-        <img src="https://admin.hasamitra-hrd.com/logo.ico"
-             alt="{{ config('app.name') }} Logo"
-             class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
+        <img src="/logo-full.png"
+             alt="{{ config('app.name') }} Logo" width="200px">
+        {{-- <span class="brand-text font-weight-light">{{ config('app.name') }}</span> --}}
     </a>
     <div class="sidebar">
         <nav class="mt-2">

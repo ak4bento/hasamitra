@@ -48,7 +48,7 @@
         </p>
     </a>
 </li>
-<li class="nav-header">Schedule</li>
+<li class="nav-header">List</li>
 
 <li
     class="nav-item 
@@ -60,7 +60,7 @@
         {{ Request::is('schemaLeaves*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-circle"></i>
         <p>
-            Schema
+            Schedule
             <i class="fas fa-angle-left right"></i>
         </p>
     </a>
@@ -69,7 +69,15 @@
             <a href="{{ route('schemaSchedules.index') }}" class="nav-link {{ Request::is('schemaSchedules') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-sticky-note"></i>
                 <p>
-                    Schema Schedules
+                    Regular
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('shiftSchedules.index') }}" class="nav-link {{ Request::is('shiftSchedules') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-calendar"></i>
+                <p>
+                    Non Regular
                 </p>
             </a>
         </li>
@@ -83,21 +91,12 @@
         </li>
     </ul>
 </li>
-        
 
 <li class="nav-item">
-    <a href="{{ route('shiftSchedules.index') }}" class="nav-link {{ Request::is('shiftSchedules') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-calendar"></i>
-        <p>
-            Shift Schedules
-        </p>
-    </a>
-</li>
-{{-- <li class="nav-item">
     <a href="{{ route('salaries.index') }}" class="nav-link {{ Request::is('salaries') ? 'active' : '' }}">
         <i class="nav-icon fas fa-calculator"></i>
         <p>
-            Salaries
+            * Salaries
         </p>
     </a>
-</li> --}}
+</li>
