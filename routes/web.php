@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'store'])->name('home.store');
 
 Route::resource('companies', App\Http\Controllers\CompanyController::class);
 
@@ -49,6 +50,8 @@ Route::resource('shiftSchedules', App\Http\Controllers\ShiftScheduleController::
 Route::resource('salaries', App\Http\Controllers\SalariesController::class);
 
 Route::get('/data/deparment/{id}', [App\Http\Controllers\EmployeeController::class, 'getDepartment']);
+
+Route::get('/data/employee/{id}', [App\Http\Controllers\EmployeeController::class, 'getEmployee']);
 
 Route::get('/data/organizational/{id}', [App\Http\Controllers\OrganizationalController::class, 'getOrganizational']);
 

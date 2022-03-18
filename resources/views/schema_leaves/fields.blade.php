@@ -18,7 +18,10 @@
 <!-- Gender Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('gender', 'Gender:') !!}
-    {!! Form::text('gender', null, ['class' => 'form-control']) !!}
+    @php
+        $pilih = array('L' => 'Laki-laki', 'P' => 'Perempuan');
+    @endphp
+    {!! Form::select('gender', $pilih, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Info Field -->

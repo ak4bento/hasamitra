@@ -121,7 +121,7 @@
     <a href="{{ route('attendances.index') }}" class="nav-link {{ Request::is('attendances') ? 'active' : '' }}">
         <i class="nav-icon fas fa-calculator"></i>
         <p>
-            * Attendances
+            Attendances
         </p>
     </a>
 </li>

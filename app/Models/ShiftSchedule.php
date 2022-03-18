@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class ShiftSchedule extends Model
 {
+    use SoftDeletes;
 
 
     public $table = 'shit_employee';

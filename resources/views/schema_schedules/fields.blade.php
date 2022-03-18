@@ -4,7 +4,16 @@
     {{-- <!-- {!! Form::number('id_master_schema', null, ['class' => 'form-control']) !!} --> --}}
     
     @php
-    $items = App\Models\MasterSchema::pluck('initial_schema', 'id');
+    $items = App\Models\MasterSchema::whereNotExists(function ($query) {
+        $query->select(DB::raw(1))
+            ->from('tb_schema_shcedule')
+            ->whereRaw('tb_schema_shcedule.id_master_schema = master_schema.id');
+    })->pluck('initial_schema', 'id');
+    // join('tb_schema_shcedule', 'tb_schema_shcedule.id_master_schema', '=', 'master_schema.id')
+    // ->where('master_schema.id', '!=', 'tb_schema_shcedule.id_master_schema')
+    // ->groupBy('tb_schema_shcedule.id_master_schema')
+    // ->get();
+    // ->pluck('master_schema.initial_schema', 'master_schema.id');
     @endphp
 
     {!! Form::select('id_master_schema', $items, null, ['class' => 'js-example-basic-multiple form-control']) !!}

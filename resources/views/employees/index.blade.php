@@ -42,7 +42,7 @@ $(document).ready(function() {
                 @endphp
                 
                 {!! Form::open(['route' => 'employees.store']) !!}
-                    {!! Form::select('company', $items, null, ['id' => 'department','class' => 'js-example-basic-multiple form-control']) !!}
+                    {!! Form::select('company', $items, $selected_company, ['id' => 'department','class' => 'js-example-basic-multiple form-control']) !!}
                 {!! Form::close() !!}
             </div>
 

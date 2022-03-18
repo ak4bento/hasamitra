@@ -33,9 +33,9 @@ class EmployeeController extends AppBaseController
     public function index(Request $request)
     {
         $employees = $this->employeeRepository->all();
-        $view = 'employees.index';
 
-        return view($view)
+        return view('employees.index')
+            ->with('selected_company', null)
             ->with('employees', $employees);
     }
 
@@ -44,9 +44,21 @@ class EmployeeController extends AppBaseController
         // $data = Organizational::join('tb_department')->where('id_company', $id)->get();
         $data = DB::table('tb_department')
                 ->join('tb_organizational_structure74', 'tb_department.id', '=', 'tb_organizational_structure74.id_department')
-                ->select('tb_organizational_structure74.id', 'tb_organizational_structure74.job_title', 'tb_department.department','tb_department.id')
+                ->join('tb_company74', 'tb_organizational_structure74.id_company', '=', 'tb_company74.id')
+                ->select('tb_organizational_structure74.id', 'tb_organizational_structure74.job_title', 'tb_department.department', 'tb_company74.name')
                 ->where('tb_organizational_structure74.id_company', $id)
                 ->get();
+
+        return json_encode($data);
+    }
+
+    public function getEmployee($id)
+    {
+        $data = DB::table('tb_employee')
+                ->where('tb_employee.id_organization', $id)
+                ->where('deleted_at', null)
+                ->get();
+
         return json_encode($data);
     }
 
@@ -83,6 +95,7 @@ class EmployeeController extends AppBaseController
                 ->get();
                 
             return view('employees.index')
+                ->with('selected_company', $input['company'])
                 ->with('employees', $employees);
         }
 
@@ -126,8 +139,9 @@ class EmployeeController extends AppBaseController
 
             return redirect(route('employees.index'));
         }
-
-        return view('employees.edit')->with('employee', $employee);
+        $com = DB::table('tb_organizational_structure74')->where('id', $employee->id_organization)->first();
+        // dd($com);
+        return view('employees.edit')->with('employee', $employee)->with('com', $com);
     }
 
     /**

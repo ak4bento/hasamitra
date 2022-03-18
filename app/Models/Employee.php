@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
@@ -29,7 +30,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class Employee extends Model
 {
-
+    use SoftDeletes;
 
     public $table = 'tb_employee';
     
@@ -88,7 +89,6 @@ class Employee extends Model
      */
     public static $rules = [
         'nik' => 'required|string|max:32',
-        'pass' => 'required|string|max:255',
         'name' => 'required|string|max:64',
         'domain' => 'required|string|max:128',
         'phone' => 'required|string|max:32',

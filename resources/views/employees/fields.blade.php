@@ -7,7 +7,7 @@
     $items->prepend('Please Select Company', '');
     @endphp
     
-    {!! Form::select('department', $items, null, ['id' => 'department','class' => 'js-example-basic-multiple form-control']) !!}
+    {!! Form::select('department', $items, $com->id_company ?? '', ['id' => 'department','class' => 'js-example-basic-multiple form-control']) !!}
 </div>
 
 <!-- Id Organization Field -->
@@ -25,7 +25,7 @@
     $items->prepend('Please Select Master Schema', '');
     @endphp
     
-    {!! Form::select('id_master_schema', $items, null, ['id' => 'id_master_schema','class' => 'js-example-basic-multiple form-control']) !!}
+    {!! Form::select('id_master_schema', $items, $employee->id_master_schema ?? '', ['id' => 'id_master_schema','class' => 'js-example-basic-multiple form-control']) !!}
 </div>
 
 <!-- Nik Field -->

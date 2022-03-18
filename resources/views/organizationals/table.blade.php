@@ -17,15 +17,20 @@
                 <td>{{ $organizational->job_title }}</td>
                 <td>{{ App\Models\Organizational::find($organizational->id_manager_org)->job_title ?? '' }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['organizationals.destroy', $organizational->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('organizationals.edit', [$organizational->id]) }}"
-                           class='btn btn-default btn-xs'>
+                        class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
+                    <div class='btn-group'>
+                        {!! Form::open(['route' => ['organizationals.destroy', $organizational->id], 'method' => 'delete']) !!}
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::close() !!}
+                    </div>
+                    <div class='btn-group'>
+                        <button type="show" class="btn {{ $organizational->total_employee == 0 ? 'btn-warning' : 'btn-primary' }} btn-xs" data-toggle="modal" data-target="#modal-lg" data-selector="{{ $organizational->id }}"><i class="fa fa-user"></i> List ({{ $organizational->total_employee }})</button>
+                    </div>
                 </td>
             </tr>
         @endforeach

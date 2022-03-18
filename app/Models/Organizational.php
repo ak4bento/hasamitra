@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class Organizational extends Model
 {
+    use SoftDeletes;
 
 
     public $table = 'tb_organizational_structure74';
@@ -69,7 +70,7 @@ class Organizational extends Model
     
     public function employee()
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Employee::class, 'id', 'id_organization');
     }
 
     public function deparment()

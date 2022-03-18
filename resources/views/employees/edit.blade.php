@@ -14,6 +14,19 @@ $(document).ready(function() {
             });
         });
     });
+    console.log({{ $employee->id_organization ?? '' }});
+    $.getJSON("/data/deparment/" + {{ $com->id_company ?? '' }}, function(result){
+        $("#organization").find('option').remove().end();
+        $.each(result, function(i, field){
+            console.log("Ini field = "+field.id+" "+field.department);
+            if ({{ $employee->id_organization ?? '' }} == field.id) {
+                $("#organization").append(`<option value="${field.id}" selected="selected">${field.department} - ${field.job_title}</option>`);
+            } else {
+                $("#organization").append(`<option value="${field.id}">${field.department} - ${field.job_title}</option>`);
+            }
+            // $("#organization").append(field + " ");
+        });
+    });
 });
 </script>
 @endpush

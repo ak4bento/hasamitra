@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@push('page_scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#company').on('change', function() {
+        console.log('Submit');
+        this.form.submit();
+    });
+});
+</script>
+@endpush
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -22,6 +33,20 @@
         @include('flash::message')
 
         <div class="clearfix"></div>
+
+        <div class="card">
+            <div class="card-body">
+                @php
+                $items = App\Models\Company::pluck('name', 'id');
+                $items->prepend('-- SELECT COMPANY--', '');
+                @endphp
+                
+                {!! Form::open(['route' => 'attendances.store']) !!}
+                    {!! Form::select('company', $items, $selected_company, ['id' => 'company','class' => 'js-example-basic-multiple form-control']) !!}
+                {!! Form::close() !!}
+            </div>
+
+        </div>
 
         <div class="card">
             <div class="card-body">

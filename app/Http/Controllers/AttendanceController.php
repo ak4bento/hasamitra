@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use DB;
 
 class AttendanceController extends AppBaseController
 {
@@ -32,6 +33,7 @@ class AttendanceController extends AppBaseController
         $attendances = $this->attendanceRepository->all();
 
         return view('attendances.index')
+            ->with('selected_company', null)
             ->with('attendances', $attendances);
     }
 
@@ -52,14 +54,26 @@ class AttendanceController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateAttendanceRequest $request)
+    public function store(Request $request)
     {
         $input = $request->all();
+        
+        if(!isset($input['company'])) {
+            $attendance = $this->attendanceRepository->create($input);
 
-        $attendance = $this->attendanceRepository->create($input);
-
-        Flash::success('Attendance saved successfully.');
-
+            Flash::success('Attendance saved successfully.');
+        } else {
+            $attendances = DB::table('tb_attendance_employee')
+                ->join('tb_employee', 'tb_attendance_employee.id_employee', '=', 'tb_employee.id')
+                ->join('tb_organizational_structure74', 'tb_employee.id_organization', '=', 'tb_organizational_structure74.id')
+                ->select('tb_attendance_employee.*')
+                ->where('tb_organizational_structure74.id_company', $input['company'])
+                ->get();
+                
+            return view('attendances.index')
+                ->with('selected_company', $input['company'])
+                ->with('attendances', $attendances);
+        }
         return redirect(route('attendances.index'));
     }
 

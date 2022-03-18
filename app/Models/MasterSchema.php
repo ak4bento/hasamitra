@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class MasterSchema extends Model
 {
+    use SoftDeletes;
 
 
     public $table = 'master_schema';

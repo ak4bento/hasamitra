@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@push('page_scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#company').on('change', function() {
+        console.log('Submit');
+        this.form.submit();
+    });
+});
+</script>
+@endpush
+
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -35,21 +46,6 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
-                <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-                </div>
-                <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
                 <h3>{{ count($employees) }}</h3>
@@ -65,11 +61,26 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                <h3>{{ number_format((count($attendances)/count($employees))*100, 0, '', '') }}<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Attendance Rate</p>
+                </div>
+                <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                <h3>65</h3>
+                <h3>{{ number_format(((count($employees) - count($attendances))/count($employees))*100, 0, '', '') }}<sup style="font-size: 20px">%</sup></h3>
 
-                <p>Unique Visitors</p>
+                <p>Absence</p>
                 </div>
                 <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -81,6 +92,20 @@
     </div>
     <div class="row">
         <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    @php
+                    $items = App\Models\Company::pluck('name', 'id');
+                    // dd($items);
+                    $items->prepend('-- SELECT COMPANY--', '');
+                    @endphp
+                    
+                    {!! Form::open(['route' => 'home.store']) !!}
+                        {!! Form::select('company', $items, $selected_company, ['id' => 'company','class' => 'js-example-basic-multiple form-control']) !!}
+                    {!! Form::close() !!}
+                </div>
+
+            </div>
             <div class="card">
                 <div class="card-header border-0">
                 <h3 class="card-title">Attendance Today</h3>
@@ -137,7 +162,7 @@
                     </p>
                     <p class="d-flex flex-column text-right">
                     <span class="font-weight-bold">
-                        <i class="ion ion-android-arrow-up text-success"></i> {{ number_format((count($attendances)/count($employees))*100, 0, '', '') }}%
+                        <i class="ion ion-android-arrow-up text-success"></i> {{ count($attendances) }}
                     </span>
                     <span class="text-muted">ATTENDANCE TODAY</span>
                     </p>
@@ -161,7 +186,7 @@
                     </p>
                     <p class="d-flex flex-column text-right">
                     <span class="font-weight-bold">
-                        <i class="ion ion-android-arrow-down text-danger"></i> {{ number_format(((count($employees) - count($attendances))/count($employees))*100, 0, '', '') }}%
+                        <i class="ion ion-android-arrow-down text-danger"></i> {{ count($employees) - count($attendances) }}
                     </span>
                     <span class="text-muted">ABSENCE TODAY</span>
                     </p>

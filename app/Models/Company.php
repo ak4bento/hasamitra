@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class Company extends Model
 {
-
+    use SoftDeletes;
 
     public $table = 'tb_company74';
     

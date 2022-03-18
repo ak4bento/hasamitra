@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class Department extends Model
 {
+    use SoftDeletes;
 
 
     public $table = 'tb_department';

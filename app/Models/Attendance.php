@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class Attendance extends Model
 {
+    use SoftDeletes;
 
 
     public $table = 'tb_attendance_employee';

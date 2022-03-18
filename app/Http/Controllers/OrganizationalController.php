@@ -31,9 +31,21 @@ class OrganizationalController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $organizationals = $this->organizationalRepository->all();
+        // $organizationals = $this->organizationalRepository->all();
         
+        $organizationals = DB::table('tb_organizational_structure74')
+                        ->select('tb_organizational_structure74.*', 
+                            DB::raw('(
+                                select count(tb_employee.id) from tb_employee 
+                                where tb_employee.id_organization = tb_organizational_structure74.id) 
+                                as total_employee'
+                            )
+                        )
+                        ->where('tb_organizational_structure74.id', 0)
+                        ->get();
+
         return view('organizationals.index')
+            ->with('selected_company', null)
             ->with('organizationals', $organizationals);
     }
 
@@ -75,9 +87,21 @@ class OrganizationalController extends AppBaseController
 
             Flash::success('Organizational saved successfully.');
         } else {
-            $organizationals = Organizational::where('id_company',$input['company'])->get();
-            
+            $organizationals = DB::table('tb_organizational_structure74')
+                ->select('tb_organizational_structure74.*', 
+                    DB::raw('(
+                        select count(tb_employee.id) from tb_employee 
+                        where tb_employee.id_organization = tb_organizational_structure74.id AND
+                        tb_employee.deleted_at is null)
+                        as total_employee'
+                    )
+                )
+                ->where('id_company',$input['company'])
+                // ->where('deleted_at', null)
+                ->get();
+
             return view('organizationals.index')
+                ->with('selected_company', $input['company'])
                 ->with('organizationals', $organizationals);
         }
         return redirect(route('organizationals.index'));

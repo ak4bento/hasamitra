@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  */
 class SchemaSchedule extends Model
 {
+    use SoftDeletes;
 
 
     public $table = 'tb_schema_shcedule';
