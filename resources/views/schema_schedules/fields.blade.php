@@ -20,8 +20,8 @@
 </div>
 
 
-<div class="card">
-    <div class="row col-sm-12">
+<div class="card col-sm-12">
+    <div class="row">
         <!-- Day Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('day', 'Monday:') !!}
@@ -71,8 +71,8 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="row col-sm-12">
+<div class="card col-sm-12">
+    <div class="row">
         <!-- Day Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('day', 'Tuesday:') !!}
@@ -122,8 +122,8 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="row col-sm-12">
+<div class="card col-sm-12">
+    <div class="row">
         <!-- Day Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('day', 'Wednesday:') !!}
@@ -173,8 +173,8 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="row col-sm-12">
+<div class="card col-sm-12">
+    <div class="row">
         <!-- Day Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('day', 'Thursday:') !!}
@@ -224,8 +224,8 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="row col-sm-12">
+<div class="card col-sm-12">
+    <div class="row">
         <!-- Day Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('day', 'Friday:') !!}
@@ -275,8 +275,8 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="row col-sm-12">
+<div class="card col-sm-12">
+    <div class="row">
         <!-- Day Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('day', 'Saturday:') !!}
@@ -326,8 +326,8 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="row col-sm-12">
+<div class="card col-sm-12">
+    <div class="row">
         <!-- Day Field -->
         <div class="form-group col-sm-12">
             {!! Form::label('day', 'Sunday:') !!}

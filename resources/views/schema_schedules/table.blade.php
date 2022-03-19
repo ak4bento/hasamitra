@@ -33,7 +33,9 @@
                         <a href="{{ route('schemaSchedules.edit', [$schemaSchedule->id_master_schema]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i> Edit
                         </a>
-                        {{-- {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!} --}}
+                    </div>
+                    <div class='btn-group'>
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

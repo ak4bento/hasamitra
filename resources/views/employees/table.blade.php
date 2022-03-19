@@ -9,7 +9,7 @@
             <th>Gender</th>
             <th>Approv 1</th>
             <th>Approv 2</th>
-            <th>Imei</th>
+            {{-- <th>Imei</th> --}}
             <th>Action</th>
         </tr>
         </thead>
@@ -24,7 +24,7 @@
                 <td>{{ $employee->gender }}</td>
                 <td width="220">{{ App\Models\Employee::find($employee->id_employee_approv_permission1)->name ?? '' }}</td>
                 <td width="220">{{ App\Models\Employee::find($employee->id_employee_approv_permission2)->name ?? '' }}</td>
-                <td>{{ $employee->imei }}</td>
+                {{-- <td>{{ $employee->imei }}</td> --}}
                 <td width="120">
                     <div class='btn-group'>
                         {!! Form::open(['route' => ['employees.destroy', $employee->id], 'method' => 'delete']) !!}

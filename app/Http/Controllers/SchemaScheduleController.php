@@ -114,7 +114,8 @@ class SchemaScheduleController extends AppBaseController
      */
     public function edit($id)
     {
-        $schemaSchedule = $this->schemaScheduleRepository->find($id);
+        // $schemaSchedule = $this->schemaScheduleRepository->find($id);
+        $schemaSchedule = SchemaSchedule::where('id_master_schema',$id)->get();
 
         if (empty($schemaSchedule)) {
             Flash::error('Schema Schedule not found');
@@ -133,17 +134,20 @@ class SchemaScheduleController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateSchemaScheduleRequest $request)
+    public function update($id, Request $request)
     {
-        $schemaSchedule = $this->schemaScheduleRepository->find($id);
+        $input = $request->all();
+        // dd($input);
 
-        if (empty($schemaSchedule)) {
-            Flash::error('Schema Schedule not found');
-
-            return redirect(route('schemaSchedules.index'));
+        for ($i=1; $i <= 7; $i++) { 
+            $schedule = SchemaSchedule::find($input['id'][$i]);
+            $schedule['id_master_schema'] = $input['id_master_schema'];
+            $schedule['day'] = $i;
+            $schedule['time_in'] = isset($input['day'][$i]) ? date("H:i", strtotime($input['time_in'][$i])) : null;
+            $schedule['time_out'] = isset($input['day'][$i]) ? date("H:i", strtotime($input['time_out'][$i])) : null;
+            $schedule['late_day'] = isset($input['late_day'][$i]) ? 'Y' : 'N';
+            $schedule->save();
         }
-
-        $schemaSchedule = $this->schemaScheduleRepository->update($request->all(), $id);
 
         Flash::success('Schema Schedule updated successfully.');
 
@@ -161,16 +165,8 @@ class SchemaScheduleController extends AppBaseController
      */
     public function destroy($id)
     {
-        $schemaSchedule = $this->schemaScheduleRepository->find($id);
-
-        if (empty($schemaSchedule)) {
-            Flash::error('Schema Schedule not found');
-
-            return redirect(route('schemaSchedules.index'));
-        }
-
-        $this->schemaScheduleRepository->delete($id);
-
+        $schedule = SchemaSchedule::where('id_master_schema', $id)->delete();
+    
         Flash::success('Schema Schedule deleted successfully.');
 
         return redirect(route('schemaSchedules.index'));

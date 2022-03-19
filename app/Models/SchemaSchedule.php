@@ -18,9 +18,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class SchemaSchedule extends Model
 {
-    use SoftDeletes;
-
-
     public $table = 'tb_schema_shcedule';
     
     const CREATED_AT = 'created_at';
