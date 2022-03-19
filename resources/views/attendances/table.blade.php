@@ -2,6 +2,7 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>Employee</th>
             <th>Check In / Out</th>
             <th>Schedule</th>
@@ -9,9 +10,11 @@
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($attendances as $attendance)
             <tr>
-                <td>{{ App\Models\Employee::find($attendance->id_employee)->name }}</td>
+                <td>{{ $count++ }}</td>
+                <td>{{ App\Models\Employee::find($attendance->id_employee)->name ?? '' }}</td>
                 <td>
                     {{-- <div class="btn-group"> --}}
                         IN : {!! $attendance->check_in ?? '<span class="right badge badge-danger">Absence</span>' !!} <br>

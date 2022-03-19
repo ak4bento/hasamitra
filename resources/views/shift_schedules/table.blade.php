@@ -2,6 +2,7 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>Employee</th>
             <th>Status Shift</th>
             <th>Day</th>
@@ -11,8 +12,10 @@
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($shiftSchedules as $shiftSchedule)
             <tr>
+                <td>{{ $count++ }}</td>
                 <td>{{ App\Models\Employee::find($shiftSchedule->id_employee)->name ?? '' }}</td>
                 <td>{{ $shiftSchedule->status_shift }}</td>
                 <td>{{ $shiftSchedule->day }}</td>

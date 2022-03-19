@@ -2,6 +2,7 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>Master Schema</th>
             <th>Gender</th>
             <th>Info</th>
@@ -11,8 +12,10 @@
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($schemaLeaves as $schemaLeave)
             <tr>
+                <td>{{ $count++ }}</td>
                 <td>{{ App\Models\MasterSchema::find($schemaLeave->id_master_schema)->initial_schema }}</td>
                 <td>{{ $schemaLeave->gender }}</td>
                 <td>{{ $schemaLeave->info }}</td>

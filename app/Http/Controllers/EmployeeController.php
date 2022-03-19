@@ -56,7 +56,7 @@ class EmployeeController extends AppBaseController
     {
         $data = DB::table('tb_employee')
                 ->where('tb_employee.id_organization', $id)
-                ->where('deleted_at', null)
+                ->whereNull('deleted_at')
                 ->get();
 
         return json_encode($data);
@@ -92,6 +92,7 @@ class EmployeeController extends AppBaseController
                 ->join('tb_organizational_structure74', 'tb_employee.id_organization', '=', 'tb_organizational_structure74.id')
                 ->select('tb_employee.*')
                 ->where('tb_organizational_structure74.id_company', $input['company'])
+                ->whereNull('tb_employee.deleted_at')
                 ->get();
                 
             return view('employees.index')

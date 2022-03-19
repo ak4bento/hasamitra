@@ -7,65 +7,73 @@ $(document).ready(function() {
         console.log('Submit');
         this.form.submit();
     });
-    $('button[type=show]').click(function() {
-        var selector = $(this).data('selector');
+    $('button[id=btnSelect]').click(function() {
+        // var selector = $(this).data('selector');
+        // alert(selector);
 
-        $.getJSON("/data/employee/" + selector, function(result){
-            $("#modal-lg").find('tbody').find('tr').remove();
-            $.each(result, function(i, field){
-                $("#modal-lg").find('tbody').append(`<tr>
-                    <td>${field.nik}</td>
-                    <td>${field.name}</td>
+        // $.getJSON("/data/employee/" + selector, function(result){
+        //     $("#modal-lg").find('tbody').find('tr').remove();
+        //     $.each(result, function(i, field){
+        //         $("#modal-lg").find('tbody').append(`<tr>
+        //             <td>${field.nik}</td>
+        //             <td>${field.name}</td>
+        //             <td>
+        //                 <a href="/employees/${field.id}/edit">
+        //                     <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Edit</button>
+        //                 </a>
+        //             </td>
+        //             </tr>`);
+        //     });
+        // });
+    });
+});
+
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
+
+function clickFunction(params) {
+    // alert('/data/employee/' + params);
+    getJSON('/data/employee/' + params,
+    function(err, data) {
+        if (err !== null) {
+            alert('Something went wrong: ' + err);
+        } else {
+            console.log(data);
+            var modal = document.getElementById('tbodyModal');
+            modal.innerHTML = '';
+            let count = 1;
+            data.forEach(myFunction);
+    
+            function myFunction(item, index) {
+                var modal = document.getElementById('tbodyModal');
+                modal.innerHTML += `<tr>
+                    <td>${count++}</td>
+                    <td>${item.nik}</td>
+                    <td>${item.name}</td>
                     <td>
-                        <a href="/employees/${field.id}/edit">
+                        <a href="/employees/${item.id}/edit">
                             <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Edit</button>
                         </a>
                     </td>
-                    </tr>`);
-            });
-        });
+                    </tr>`;
+                // text += index + ": " + item + "<br>"; 
+            }
+        }
     });
-});
+}
 </script>
-
-<div class="modal fade" id="modal-lg">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title">List Employee</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <table id="table-employee" class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>NIK</th>
-                        <th>Name</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"><i class="fa fa-eye"></i> Show</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 @endpush
 
 @section('content')

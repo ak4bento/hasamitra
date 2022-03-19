@@ -2,6 +2,7 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>SCHEMA</th>
             <th>MONDAY</th>
             <th>TUESDAY</th>
@@ -14,9 +15,11 @@
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($schemaSchedules as $schemaSchedule)
             <tr>
-                <td>{{ App\Models\MasterSchema::find($schemaSchedule->id_master_schema)->initial_schema }}</td>
+                <td>{{ $count++ }}</td>
+                <td>{{ App\Models\MasterSchema::find($schemaSchedule->id_master_schema)->initial_schema ?? '' }}</td>
                 @foreach(App\Models\SchemaSchedule::where('id_master_schema',$schemaSchedule->id_master_schema)->get() as $result)
                 @if (!is_null($result->time_in) && date("H:i", strtotime($result->time_in)) != '00:00')
                 <td>{{ date("H:i", strtotime($result->time_in)) }} - <br>{{ date("H:i", strtotime($result->time_out)) }}</td>

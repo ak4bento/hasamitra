@@ -2,6 +2,7 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>Nik</th>
             <th>Name</th>
             <th>Phone</th>
@@ -13,8 +14,10 @@
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($employees as $employee)
             <tr>
+                <td>{{ $count++ }}</td>
                 <td>{{ $employee->nik }}</td>
                 <td width="220">{{ $employee->name }}</td>
                 <td>{{ $employee->phone }}</td>

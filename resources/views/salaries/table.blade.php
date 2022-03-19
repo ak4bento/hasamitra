@@ -2,6 +2,7 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>Id Company</th>
             <th>Id Org</th>
             <th>Id Employee</th>
@@ -15,8 +16,10 @@
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($salaries as $salaries)
             <tr>
+                <td>{{ $count++ }}</td>
                 <td>{{ $salaries->id_company }}</td>
                 <td>{{ $salaries->id_org }}</td>
                 <td>{{ $salaries->id_employee }}</td>

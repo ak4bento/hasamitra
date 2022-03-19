@@ -95,6 +95,7 @@ $(document).ready(function() {
             <div class="card">
                 <div class="card-body">
                     @php
+                    $count = 1;
                     $items = App\Models\Company::pluck('name', 'id');
                     // dd($items);
                     $items->prepend('-- SELECT COMPANY--', '');
@@ -122,6 +123,7 @@ $(document).ready(function() {
                 <table class="table table-striped table-valign-middle">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Name</th>
                             <th>Check In</th>
                             <th>Check Out</th>
@@ -130,6 +132,7 @@ $(document).ready(function() {
                     <tbody>
                         @foreach ($attendances as $attendance)
                         <tr>
+                            <td>{{ $count++ }}</td>
                             <td>
                                 {{ App\Models\Employee::find($attendance->id_employee)->name }}
                             </td>

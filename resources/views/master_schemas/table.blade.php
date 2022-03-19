@@ -2,14 +2,17 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>Name Department</th>
             <th>Initial Schema</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($masterSchemas as $masterSchema)
             <tr>
+                <td>{{ $count++ }}</td>
                 <td>{{ App\Models\Department::find($masterSchema->id_department)->department }}</td>
                 <td>{{ $masterSchema->initial_schema }}</td>
                 <td width="120">

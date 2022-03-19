@@ -67,10 +67,12 @@
 <li
     class="nav-item 
     {{ Request::is('schemaSchedules*') ? 'menu-open' : '' }}
+    {{ Request::is('shiftSchedules*') ? 'menu-open' : '' }}
     {{ Request::is('schemaLeaves*') ? 'menu-open' : '' }}">
     <a href="#"
         class="nav-link 
         {{ Request::is('schemaSchedules*') ? 'active' : '' }}
+        {{ Request::is('shiftSchedules*') ? 'active' : '' }}
         {{ Request::is('schemaLeaves*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-circle"></i>
         <p>

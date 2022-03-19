@@ -2,6 +2,7 @@
     <table class="table" id="example2">
         <thead>
         <tr>
+            <th>No</th>
             <th>Name</th>
             <th>Domain</th>
             <th>Phone</th>
@@ -10,8 +11,10 @@
         </tr>
         </thead>
         <tbody>
+        @php($count = 1)
         @foreach($companies as $company)
             <tr>
+                <td>{{ $count++ }}</td>
                 <td>{{ $company->name }}</td>
                 <td>{{ $company->domain }}</td>
                 <td>{{ $company->phone }}</td>
