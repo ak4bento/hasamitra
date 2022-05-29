@@ -48,15 +48,27 @@ Route::resource('shiftSchedules', App\Http\Controllers\ShiftScheduleController::
 
 
 Route::resource('salaries', App\Http\Controllers\SalariesController::class);
+Route::get('salaries/type/company', [App\Http\Controllers\SalariesController::class, 'indexCompany'])->name('salaries.indexCompany');
+Route::get('salaries/type/organizational', [App\Http\Controllers\SalariesController::class, 'indexOrganizational'])->name('salaries.indexOrganizational');
 
 Route::get('/data/deparment/{id}', [App\Http\Controllers\EmployeeController::class, 'getDepartment']);
 
 Route::get('/data/employee/{id}', [App\Http\Controllers\EmployeeController::class, 'getEmployee']);
 
-Route::get('/data/organizational/{id}', [App\Http\Controllers\OrganizationalController::class, 'getOrganizational']);
+Route::get('/data/organizational/{company}/{department}', [App\Http\Controllers\OrganizationalController::class, 'getOrganizational']);
 
 
 Route::resource('admins', App\Http\Controllers\AdminController::class);
 
 
 Route::resource('attendances', App\Http\Controllers\AttendanceController::class);
+
+
+Route::resource('schemaBreaks', App\Http\Controllers\SchemaBreakController::class);
+
+
+Route::resource('submissions', App\Http\Controllers\SubmissionController::class);
+
+Route::get('submission/received', [App\Http\Controllers\SubmissionController::class, 'indexReceived'])->name('submissions.received');
+
+Route::get('submission/rejected', [App\Http\Controllers\SubmissionController::class, 'indexRejected'])->name('submissions.rejected');

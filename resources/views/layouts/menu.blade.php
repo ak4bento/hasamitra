@@ -113,7 +113,7 @@
     <a href="{{ route('salaries.index') }}" class="nav-link {{ Request::is('salaries') ? 'active' : '' }}">
         <i class="nav-icon fas fa-calculator"></i>
         <p>
-            * Salaries
+            Salaries
         </p>
     </a>
 </li>
@@ -121,9 +121,33 @@
 
 <li class="nav-item">
     <a href="{{ route('attendances.index') }}" class="nav-link {{ Request::is('attendances') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-calculator"></i>
+        <i class="nav-icon fas fa-hand-paper"></i>
         <p>
             Attendances
         </p>
     </a>
+</li>
+
+<li class="nav-header">Break</li>
+
+<li class="nav-item">
+    <a href="{{ route('schemaBreaks.index') }}" class="nav-link {{ Request::is('schemaBreaks') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-asterisk"></i>
+        <p>
+            Schema Breaks
+        </p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('submissions.index') }}" class="nav-link {{ Request::is('submissions') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-file-word"></i>
+        <p>
+            Submissions
+        </p>
+    </a>
+</li>
+
+<li class="nav-header">
+    <br>
 </li>

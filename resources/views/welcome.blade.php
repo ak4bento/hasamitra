@@ -52,13 +52,6 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#speakers">Speakers</a></li>
-          <li><a class="nav-link scrollto" href="#schedule">Schedule</a></li>
-          <li><a class="nav-link scrollto" href="#venue">Venue</a></li>
-          <li><a class="nav-link scrollto" href="#hotels">Hotels</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -71,16 +64,16 @@
   <section id="hero">
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
       <h1 class="mb-4 pb-0">Selamat Datang di Website<br><span>Hasamitra HRD</span></h1>
-      <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p>
-      <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
-      <a href="#about" class="about-btn scrollto">About The Event</a>
+      {{-- <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p> --}}
+      <a href="https://www.youtube.com/watch?v=eepgONz_1ng" class="glightbox play-btn mb-4"></a>
+      {{-- <a href="#about" class="about-btn scrollto">About The Event</a> --}}
     </div>
   </section><!-- End Hero Section -->
 
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about">
+    {{-- <section id="about">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6">
@@ -99,7 +92,8 @@
           </div>
         </div>
       </div>
-    </section><!-- End About Section -->
+    </section> --}}
+    <!-- End About Section -->
 
   </main><!-- End #main -->
 
@@ -109,12 +103,12 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 footer-info">
+          {{-- <div class="col-lg-3 col-md-6 footer-info">
             <img src="/logo-full.png" alt="TheEvenet">
             <p>In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis accusamus repellat cumque.</p>
-          </div>
+          </div> --}}
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          {{-- <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
@@ -123,9 +117,9 @@
               <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
-          </div>
+          </div> --}}
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          {{-- <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
@@ -134,9 +128,9 @@
               <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
-          </div>
+          </div> --}}
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          {{-- <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
               A108 Adam Street <br>
@@ -154,7 +148,7 @@
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
 
-          </div>
+          </div> --}}
 
         </div>
       </div>
@@ -162,10 +156,10 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>ak4bento</strong>. All Rights Reserved
+        &copy; Copyright <strong>Ciber.ISCS</strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="https://akil.co.id/">ak4bento</a>
+        Designed by <a href="https://akil.co.id/">ciber.iscs</a>
       </div>
     </div>
   </footer><!-- End  Footer -->

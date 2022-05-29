@@ -6,6 +6,7 @@ use App\Http\Requests\CreateSalariesRequest;
 use App\Http\Requests\UpdateSalariesRequest;
 use App\Repositories\SalariesRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Salaries;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -29,11 +30,30 @@ class SalariesController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $salaries = $this->salariesRepository->all();
+        // $salaries = $this->salariesRepository->all(['id_employee' => '']);
+        $salaries = Salaries::whereNotNull('id_employee')->get();
 
         return view('salaries.index')
             ->with('salaries', $salaries);
     }
+
+    public function indexCompany(Request $request)
+    {
+        $salaries = Salaries::whereNotNull('id_company')->get();
+
+        return view('salaries.index')
+            ->with('salaries', $salaries);
+    }
+    
+    public function indexOrganizational(Request $request)
+    {
+        $salaries = Salaries::whereNotNull('id_org')->get();
+
+        return view('salaries.index')
+            ->with('salaries', $salaries);
+    }
+
+
 
     /**
      * Show the form for creating a new Salaries.

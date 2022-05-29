@@ -3,15 +3,22 @@
         <thead>
         <tr>
             <th>No</th>
-            <th>Id Company</th>
-            <th>Id Org</th>
-            <th>Id Employee</th>
+            @if (Request::is('salaries/type/company'))
+            <th>Company</th>
+            @endif
+            @if (Request::is('salaries/type/organizational'))
+            <th>Company</th>
+            <th>Organizational</th>
+            @endif
+            @if (Request::is('salaries'))
+            <th>Employee</th>
+            @endif
             <th>Salary</th>
-            <th>Status Profit</th>
+            {{-- <th>Status Profit</th> --}}
             <th>Info Profit</th>
             <th>From Date</th>
             <th>To Date</th>
-            <th>Id Employee Approv</th>
+            {{-- <th>Id Employee Approv</th> --}}
             <th>Action</th>
         </tr>
         </thead>
@@ -20,15 +27,22 @@
         @foreach($salaries as $salaries)
             <tr>
                 <td>{{ $count++ }}</td>
-                <td>{{ $salaries->id_company }}</td>
-                <td>{{ $salaries->id_org }}</td>
-                <td>{{ $salaries->id_employee }}</td>
-                <td>{{ $salaries->salary }}</td>
-                <td>{{ $salaries->status_profit }}</td>
+                @if (Request::is('salaries/type/company'))
+                <td>{{ App\Models\Company::find($salaries->id_company)->name }}</td>
+                @endif
+                @if (Request::is('salaries/type/organizational'))
+                <td>{{ App\Models\Company::find($salaries->id_company)->name ?? '' }}</td>
+                <td>{{ App\Models\Organizational::find($salaries->id_org)->job_title ?? '' }}</td>
+                @endif
+                @if (Request::is('salaries'))
+                <td>{{ App\Models\Employee::find($salaries->id_employee)->name ?? '' }}</td>
+                @endif
+                <td>{{ number_format($salaries->salary, '0', ',', '.') }}</td>
+                {{-- <td>{{ $salaries->status_profit == 1 ? 'Contract' : 'Permanent' }}</td> --}}
                 <td>{{ $salaries->info_profit }}</td>
-                <td>{{ $salaries->from_date }}</td>
-                <td>{{ $salaries->to_date }}</td>
-                <td>{{ $salaries->id_employee_approv }}</td>
+                <td>{{ date('d M Y', strtotime($salaries->from_date)) }}</td>
+                <td>{{ date('d M Y', strtotime($salaries->to_date)) }}</td>
+                {{-- <td>{{ $salaries->id_employee_approv }}</td> --}}
                 <td width="120">
                     {!! Form::open(['route' => ['salaries.destroy', $salaries->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

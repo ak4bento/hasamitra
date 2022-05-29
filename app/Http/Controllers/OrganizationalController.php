@@ -59,13 +59,15 @@ class OrganizationalController extends AppBaseController
         return view('organizationals.create');
     }
 
-    public function getOrganizational($id)
+    public function getOrganizational($company, $department)
     {
         $data = DB::table('tb_organizational_structure74')
                 ->join('tb_company74', 'tb_organizational_structure74.id_company', '=', 'tb_company74.id')
                 ->select('tb_organizational_structure74.*', 'tb_company74.name as company_name')
-                ->where('id_company', $id)
-                ->orWhere('share', 'Ya')
+                ->whereNull('tb_organizational_structure74.deleted_at')
+                ->where('tb_organizational_structure74.id_company', $company)
+                ->where('tb_organizational_structure74.id_department', $department)
+                ->orWhere('tb_organizational_structure74.share', 'Ya')
                 ->get();
 
         return json_encode($data);
@@ -97,7 +99,7 @@ class OrganizationalController extends AppBaseController
                     )
                 )
                 ->where('id_company',$input['company'])
-                // ->where('deleted_at', null)
+                ->whereNull('tb_organizational_structure74.deleted_at')
                 ->get();
 
             return view('organizationals.index')

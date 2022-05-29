@@ -120,6 +120,8 @@ class AdminController extends AppBaseController
     {
         $input = $request->all();
 
+        $input['password'] = Hash::make($input['password']);
+        
         $admin = $this->adminRepository->find($id);
 
         if (empty($admin)) {

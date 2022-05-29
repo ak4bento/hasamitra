@@ -21,7 +21,7 @@
     $items->prepend('Please Select Department', '');
     @endphp
 
-    {!! Form::select('id_department', $items, null, ['class' => 'js-example-basic-multiple form-control']) !!}
+    {!! Form::select('id_department', $items, null, ['id' => 'id_department', 'class' => 'js-example-basic-multiple form-control']) !!}
 </div>
 
 <!-- Job Title Field -->
@@ -35,7 +35,7 @@
     {!! Form::label('id_manager_org', 'Manager:') !!}
     {{-- {!! Form::number('id_manager_org', null, ['class' => 'form-control']) !!} --}}
     
-    {!! Form::select('id_manager_org', [null=>'Please Select Company'], null, ['id' => 'id_manager_org','class' => 'js-example-basic-multiple form-control']) !!}
+    {!! Form::select('id_manager_org', [null=>'Please Select Company'], null, ['id' => 'id_manager_org','class' => 'js-example-basic-multiple form-control', 'disabled']) !!}
 </div>
 
 <!-- Id Manager Org Field -->

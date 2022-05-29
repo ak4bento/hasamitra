@@ -57,6 +57,28 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
+            @if (Request::is('submissions') || Request::is('submission/*'))
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('submissions.index') }}" class="btn {{ Request::is('submissions') ? 'btn-warning text-white' : 'btn-outline-warning' }} btn-sm nav-link">Request</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('submissions.received') }}" class="btn {{ Request::is('submission/received') ? 'btn-success text-white' : 'btn-outline-success' }} btn-sm nav-link">Received</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('submissions.rejected') }}" class="btn {{ Request::is('submission/rejected') ? 'btn-danger text-white' : 'btn-outline-danger' }} btn-sm nav-link">Rejected</a>
+                </li>
+            @endif
+            @if (Request::is('salaries') || Request::is('salaries/type/*'))
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('salaries.index') }}" class="btn {{ Request::is('salaries') ? 'btn-primary text-white' : 'btn-outline-primary' }} btn-sm nav-link">Employee</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('salaries.indexOrganizational') }}" class="btn {{ Request::is('salaries/type/organizational') ? 'btn-secondary text-white' : 'btn-outline-secondary' }} btn-sm nav-link">Organizational</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('salaries.indexCompany') }}" class="btn {{ Request::is('salaries/type/company') ? 'btn-info text-white' : 'btn-outline-info' }} btn-sm nav-link">Company</a>
+                </li>
+            @endif
         </ul>
 
         <ul class="navbar-nav ml-auto">
