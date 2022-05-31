@@ -7,6 +7,7 @@
             <th>Info</th>
             <th>Quantify Saldo</th>
             <th>Saldo</th>
+            <th>Saldo Max</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -18,6 +19,7 @@
                 <td>{{ $schemaBreak->info }}</td>
                 <td>{{ $schemaBreak->quantify_saldo == 'D' ? 'Hari' : 'Jam' }}</td>
                 <td>{{ $schemaBreak->saldo }}</td>
+                <td>{{ $schemaBreak->saldo_max }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['schemaBreaks.destroy', $schemaBreak->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

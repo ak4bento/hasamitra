@@ -35,7 +35,9 @@ class Submission extends Model
         'id_employee',
         'id_saldo_cuti',
         'id_employee_approv',
+        'id_employee_approv_2',
         'status_approv',
+        'status_approv_2',
         'ket_cuti',
         'saldo_cuti',
         'submission_date'
@@ -51,7 +53,9 @@ class Submission extends Model
         'id_employee' => 'integer',
         'id_saldo_cuti' => 'integer',
         'id_employee_approv' => 'integer',
+        'id_employee_approv_2' => 'integer',
         'status_approv' => 'string',
+        'status_approv_2' => 'string',
         'ket_cuti' => 'string',
         'saldo_cuti' => 'integer',
         'submission_date' => 'date'
@@ -63,13 +67,13 @@ class Submission extends Model
      * @var array
      */
     public static $rules = [
-        'id_employee' => 'required|integer',
-        'id_saldo_cuti' => 'nullable|integer',
+        // 'id_employee' => 'required|integer',
+        // 'id_saldo_cuti' => 'nullable|integer',
         'id_employee_approv' => 'nullable|integer',
         'status_approv' => 'required|string',
-        'ket_cuti' => 'required|string|max:128',
-        'saldo_cuti' => 'required|integer',
-        'submission_date' => 'required'
+        // 'ket_cuti' => 'required|string|max:128',
+        // 'saldo_cuti' => 'required|integer',
+        // 'submission_date' => 'required'
     ];
 
     

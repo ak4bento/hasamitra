@@ -21,7 +21,8 @@ class SchemaBreakRepository extends BaseRepository
         'gender',
         'info',
         'quantify_saldo',
-        'saldo'
+        'saldo',
+        'saldo_max',
     ];
 
     /**

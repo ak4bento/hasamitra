@@ -1,5 +1,24 @@
 @extends('layouts.app')
 
+@push('page_scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#id_company').on('change', function() {
+        $.getJSON("/data/salaries/organizational/" + this.value, function(result){
+            console.log("ada data dari company");
+            document.getElementById("id_org").disabled = false;
+            $("#id_org").find('option').remove().end();
+            $.each(result, function(i, field){
+                // console.log("Ini field = "+field.department);
+                $("#id_org").append(`<option value="${field.id}">${field.department} - ${field.job_title}</option>`);
+                // $("#organization").append(field + " ");
+            });
+        });
+    });
+});
+</script>
+@endpush
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">

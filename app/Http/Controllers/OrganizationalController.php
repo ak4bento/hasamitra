@@ -73,6 +73,19 @@ class OrganizationalController extends AppBaseController
         return json_encode($data);
     }
 
+    public function getSalariesOrganizational($company)
+    {
+        $data = DB::table('tb_organizational_structure74')
+                ->join('tb_company74', 'tb_organizational_structure74.id_company', '=', 'tb_company74.id')
+                ->join('tb_department', 'tb_organizational_structure74.id_department', '=', 'tb_department.id')
+                ->select('tb_organizational_structure74.*', 'tb_company74.name as company_name', 'tb_department.department')
+                ->whereNull('tb_organizational_structure74.deleted_at')
+                ->where('tb_organizational_structure74.id_company', $company)
+                ->get();
+
+        return json_encode($data);
+    }
+
     /**
      * Store a newly created Organizational in storage.
      *

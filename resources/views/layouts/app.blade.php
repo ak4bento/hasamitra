@@ -67,8 +67,11 @@
                 <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
                     <a href="{{ route('submissions.rejected') }}" class="btn {{ Request::is('submission/rejected') ? 'btn-danger text-white' : 'btn-outline-danger' }} btn-sm nav-link">Rejected</a>
                 </li>
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('submissions.canceled') }}" class="btn {{ Request::is('submission/canceled') ? 'btn-secondary text-white' : 'btn-outline-secondary' }} btn-sm nav-link">Canceled</a>
+                </li>
             @endif
-            @if (Request::is('salaries') || Request::is('salaries/type/*'))
+            @if (Request::is('salaries*') || Request::is('salaries/type/*'))
                 <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
                     <a href="{{ route('salaries.index') }}" class="btn {{ Request::is('salaries') ? 'btn-primary text-white' : 'btn-outline-primary' }} btn-sm nav-link">Employee</a>
                 </li>

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="example2">
+    <table class="table table-hover text-nowrap" id="example2">
         <thead>
         <tr>
             <th>No</th>
@@ -37,7 +37,13 @@
                 @if (Request::is('salaries'))
                 <td>{{ App\Models\Employee::find($salaries->id_employee)->name ?? '' }}</td>
                 @endif
-                <td>{{ number_format($salaries->salary, '0', ',', '.') }}</td>
+                <td>
+                    @if ($salaries->status_profit == 'Kontrak')
+                        <span class="badge badge-success">{{ number_format($salaries->salary, '0', ',', '.') }}</span>
+                    @else
+                        <span class="badge badge-warning">{{ number_format($salaries->salary, '0', ',', '.') }}</span>
+                    @endif
+                </td>
                 {{-- <td>{{ $salaries->status_profit == 1 ? 'Contract' : 'Permanent' }}</td> --}}
                 <td>{{ $salaries->info_profit }}</td>
                 <td>{{ date('d M Y', strtotime($salaries->from_date)) }}</td>

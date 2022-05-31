@@ -34,7 +34,8 @@ class SchemaBreak extends Model
         'gender',
         'info',
         'quantify_saldo',
-        'saldo'
+        'saldo',
+        'saldo_max',
     ];
 
     /**
@@ -48,7 +49,8 @@ class SchemaBreak extends Model
         'gender' => 'string',
         'info' => 'string',
         'quantify_saldo' => 'string',
-        'saldo' => 'integer'
+        'saldo' => 'integer',
+        'saldo_max' => 'integer'
     ];
 
     /**
@@ -60,7 +62,8 @@ class SchemaBreak extends Model
         'gender' => 'required|string',
         'info' => 'required|string|max:64',
         'quantify_saldo' => 'required|string',
-        'saldo' => 'required|integer'
+        'saldo' => 'required|integer',
+        'saldo_max' => 'required|integer'
     ];
 
     

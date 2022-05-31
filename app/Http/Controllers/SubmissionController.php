@@ -29,7 +29,7 @@ class SubmissionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $submissions = $this->submissionRepository->all(['status_approv' => 'permintaan']);
+        $submissions = $this->submissionRepository->all(['status_approv_2' => 'permintaan']);
 
         return view('submissions.index')
             ->with('submissions', $submissions);
@@ -44,7 +44,7 @@ class SubmissionController extends AppBaseController
      */
     public function indexReceived(Request $request)
     {
-        $submissions = $this->submissionRepository->all(['status_approv' => 'diterima']);
+        $submissions = $this->submissionRepository->all(['status_approv_2' => 'diterima']);
 
         return view('submissions.index')
             ->with('submissions', $submissions);
@@ -59,7 +59,22 @@ class SubmissionController extends AppBaseController
      */
     public function indexRejected(Request $request)
     {
-        $submissions = $this->submissionRepository->all(['status_approv' => 'ditolak']);
+        $submissions = $this->submissionRepository->all(['status_approv_2' => 'ditolak']);
+
+        return view('submissions.index')
+            ->with('submissions', $submissions);
+    }
+
+    /**
+     * Display a listing of the Submission.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function indexCanceled(Request $request)
+    {
+        $submissions = $this->submissionRepository->all(['status_approv_2' => 'batal']);
 
         return view('submissions.index')
             ->with('submissions', $submissions);

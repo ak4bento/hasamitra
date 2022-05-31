@@ -20,7 +20,9 @@ class SubmissionRepository extends BaseRepository
         'id_employee',
         'id_saldo_cuti',
         'id_employee_approv',
+        'id_employee_approv_2',
         'status_approv',
+        'status_approv_2',
         'ket_cuti',
         'saldo_cuti',
         'submission_date'

@@ -73,11 +73,10 @@ class Salaries extends Model
         'id_org' => 'nullable|integer',
         'id_employee' => 'nullable|integer',
         'salary' => 'required|integer',
-        'status_profit' => 'required|string|max:1',
-        'info_profit' => 'required|string|max:64',
+        'status_profit' => 'required',
+        'info_profit' => 'required|string',
         'from_date' => 'required',
         'to_date' => 'required',
-        'id_employee_approv' => 'nullable|integer'
     ];
 
     

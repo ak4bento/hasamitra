@@ -39,7 +39,7 @@ class SalariesController extends AppBaseController
 
     public function indexCompany(Request $request)
     {
-        $salaries = Salaries::whereNotNull('id_company')->get();
+        $salaries = Salaries::whereNotNull('id_company')->whereNull('id_org')->get();
 
         return view('salaries.index')
             ->with('salaries', $salaries);

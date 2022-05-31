@@ -37,3 +37,9 @@
     {!! Form::label('saldo', 'Saldo:') !!}
     {!! Form::number('saldo', null, ['class' => 'form-control', 'min' => '1', 'max' => '100']) !!}
 </div>
+
+<!-- Saldo Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('saldo', 'Saldo Max:') !!}
+    {!! Form::number('saldo_max', null, ['class' => 'form-control', 'min' => '1', 'max' => '100']) !!}
+</div>

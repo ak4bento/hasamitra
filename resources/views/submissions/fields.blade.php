@@ -45,6 +45,7 @@
         <option value="permintaan">Permintaan</option>
         <option value="ditolak">Di tolak</option>
         <option value="diterima">Di terima</option>
+        <option value="batal">Batal</option>
     </select>
 </div>
 
