@@ -74,3 +74,6 @@ Route::get('submission/received', [App\Http\Controllers\SubmissionController::cl
 Route::get('submission/rejected', [App\Http\Controllers\SubmissionController::class, 'indexRejected'])->name('submissions.rejected');
 
 Route::get('submission/canceled', [App\Http\Controllers\SubmissionController::class, 'indexCanceled'])->name('submissions.canceled');
+
+
+Route::resource('acceptSalaries', App\Http\Controllers\AcceptSalariesController::class);

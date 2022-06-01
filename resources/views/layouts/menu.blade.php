@@ -117,6 +117,14 @@
         </p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{ route('acceptSalaries.index') }}" class="nav-link {{ Request::is('acceptSalaries') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calculator"></i>
+        <p>
+            * Accept Salaries
+        </p>
+    </a>
+</li>
 @endrole
 
 <li class="nav-item">
