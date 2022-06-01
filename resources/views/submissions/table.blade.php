@@ -35,13 +35,13 @@
                         <span class="badge badge-secondary">Canceled</span>
                     @endif
                     <br>
-                    @if ($submission->status_approv_2 == 'ditolak')
+                    @if ($submission->status_approv2 == 'ditolak')
                         <span class="badge badge-danger">Rejected</span>
-                    @elseif ($submission->status_approv_2 == 'diterima')
+                    @elseif ($submission->status_approv2 == 'diterima')
                         <span class="badge badge-success">Received</span>
-                    @elseif ($submission->status_approv_2 == 'permintaan')
+                    @elseif ($submission->status_approv2 == 'permintaan')
                         <span class="badge badge-warning">Request</span>
-                    @elseif ($submission->status_approv_2 == 'batal')
+                    @elseif ($submission->status_approv2 == 'batal')
                         <span class="badge badge-secondary">Canceled</span>
                     @endif
                 </td>

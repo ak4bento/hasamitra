@@ -37,7 +37,7 @@ class Submission extends Model
         'id_employee_approv',
         'id_employee_approv_2',
         'status_approv',
-        'status_approv_2',
+        'status_approv2',
         'ket_cuti',
         'saldo_cuti',
         'submission_date'
@@ -55,7 +55,7 @@ class Submission extends Model
         'id_employee_approv' => 'integer',
         'id_employee_approv_2' => 'integer',
         'status_approv' => 'string',
-        'status_approv_2' => 'string',
+        'status_approv2' => 'string',
         'ket_cuti' => 'string',
         'saldo_cuti' => 'integer',
         'submission_date' => 'date'
