@@ -97,14 +97,14 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="{{ route('schemaLeaves.index') }}" class="nav-link {{ Request::is('schemaLeaves') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-cube"></i>
                 <p>
                     Schema Leave
                 </p>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </li>
 

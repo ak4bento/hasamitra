@@ -14,7 +14,7 @@
         @foreach($organizationals as $organizational)
             <tr>
                 <td>{{ $count++ }}</td>
-                <td>{{ App\Models\Department::find($organizational->id_department)->department }}</td>
+                <td>{{ App\Models\Department::find($organizational->id_department)->department ?? '' }}</td>
                 <td>{{ $organizational->job_title }}</td>
                 <td>{{ App\Models\Organizational::find($organizational->id_manager_org)->job_title ?? '' }}</td>
                 <td width="120">

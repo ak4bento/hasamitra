@@ -61,13 +61,21 @@ class OrganizationalController extends AppBaseController
 
     public function getOrganizational($company, $department)
     {
+        // $data = DB::table('tb_organizational_structure74')
+        //         ->join('tb_company74', 'tb_organizational_structure74.id_company', '=', 'tb_company74.id')
+        //         ->select('tb_organizational_structure74.*', 'tb_company74.name as company_name')
+        //         ->whereNull('tb_organizational_structure74.deleted_at')
+        //         ->where('tb_organizational_structure74.share', 'Ya')
+        //         ->orWhere('tb_organizational_structure74.id_company', $company)
+        //         ->where('tb_organizational_structure74.id_department', $department)
+        //         ->get();
         $data = DB::table('tb_organizational_structure74')
-                ->join('tb_company74', 'tb_organizational_structure74.id_company', '=', 'tb_company74.id')
+                ->leftJoin('tb_company74', 'tb_organizational_structure74.id_company', '=', 'tb_company74.id')
                 ->select('tb_organizational_structure74.*', 'tb_company74.name as company_name')
-                ->whereNull('tb_organizational_structure74.deleted_at')
                 ->where('tb_organizational_structure74.id_company', $company)
-                ->where('tb_organizational_structure74.id_department', $department)
+                // ->where('tb_organizational_structure74.id_department', $department)
                 ->orWhere('tb_organizational_structure74.share', 'Ya')
+                ->whereNull('tb_organizational_structure74.deleted_at')
                 ->get();
 
         return json_encode($data);

@@ -13,7 +13,7 @@
         @foreach($masterSchemas as $masterSchema)
             <tr>
                 <td>{{ $count++ }}</td>
-                <td>{{ App\Models\Department::find($masterSchema->id_department)->department }}</td>
+                <td>{{ App\Models\Department::find($masterSchema->id_department)->department ?? '' }}</td>
                 <td>{{ $masterSchema->initial_schema }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['masterSchemas.destroy', $masterSchema->id], 'method' => 'delete']) !!}

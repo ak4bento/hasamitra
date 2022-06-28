@@ -103,7 +103,7 @@ function clickFunction(params) {
             <div class="card-body">
                 @php
                 $items = App\Models\Company::pluck('name', 'id');
-                $items->prepend('-- SELECT COMPANY--', '');
+                $items->prepend('-- SELECT COMPANY --', '');
                 @endphp
                 
                 {!! Form::open(['route' => 'organizationals.store']) !!}

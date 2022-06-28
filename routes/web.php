@@ -39,7 +39,7 @@ Route::patch('employees/approve/{id}', [App\Http\Controllers\EmployeeController:
 
 Route::resource('schemaSchedules', App\Http\Controllers\SchemaScheduleController::class);
 
-Route::resource('schemaLeaves', App\Http\Controllers\SchemaLeaveController::class);
+//Route::resource('schemaLeaves', App\Http\Controllers\SchemaLeaveController::class);
 
 Route::resource('shiftSchedules', App\Http\Controllers\ShiftScheduleController::class);
 
