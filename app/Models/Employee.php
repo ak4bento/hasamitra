@@ -50,6 +50,7 @@ class Employee extends Model
         'id_employee_approv_permission1',
         'id_employee_approv_permission2',
         'id_master_schema',
+        'status',
         'avatar'
     ];
 
@@ -74,6 +75,7 @@ class Employee extends Model
         'id_employee_approv_permission1' => 'integer',
         'id_employee_approv_permission2' => 'integer',
         'id_master_schema' => 'integer',
+        'status' => 'string',
         'avatar' => 'string'
     ];
 
@@ -96,6 +98,7 @@ class Employee extends Model
         'id_employee_approv_permission1' => 'nullable|integer',
         'id_employee_approv_permission2' => 'nullable|integer',
         'id_master_schema' => 'nullable|integer',
+        'status' => 'nullable|string',
         'avatar' => 'nullable|string|max:100'
     ];
 
@@ -103,4 +106,11 @@ class Employee extends Model
     {
         return $this->belongTo(Organizational::class);
     }
+
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
+
 }

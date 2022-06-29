@@ -29,11 +29,14 @@
                 @endforeach
                 <td width="120">
                     {!! Form::open(['route' => ['schemaSchedules.destroy', $schemaSchedule->id_master_schema], 'method' => 'delete']) !!}
-                    <div class='btn-group'>
-                        <a href="{{ route('schemaSchedules.edit', [$schemaSchedule->id_master_schema]) }}" class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i> Edit
-                        </a>
-                    </div>
+                    @if (isset(App\Models\MasterSchema::find($schemaSchedule->id_master_schema)->initial_schema))
+                        <div class='btn-group'>
+                            <a href="{{ route('schemaSchedules.edit', [$schemaSchedule->id_master_schema]) }}" class='btn btn-default btn-xs'>
+                                <i class="far fa-edit"></i> Edit
+                            </a>
+                        </div>
+                    @endif
+
                     <div class='btn-group'>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>

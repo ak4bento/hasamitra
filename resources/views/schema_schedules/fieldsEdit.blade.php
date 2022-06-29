@@ -1,8 +1,8 @@
 <!-- Id Master Schema Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('id_master_schema', 'Master Schema:') !!}
-    {!! Form::text('master_schema', App\Models\MasterSchema::find($schemaSchedule[0]->id_master_schema)->initial_schema, ['class' => 'form-control', 'disabled']) !!}
-    {!! Form::hidden('id_master_schema', $schemaSchedule[0]->id_master_schema) !!}
+    {!! Form::text('master_schema', App\Models\MasterSchema::find($schemaSchedule[0]->id_master_schema)->initial_schema ?? '', ['class' => 'form-control', 'disabled']) !!}
+    {!! Form::hidden('id_master_schema', $schemaSchedule[0]->id_master_schema ?? '') !!}
 </div>
 @php
     $index = 1;

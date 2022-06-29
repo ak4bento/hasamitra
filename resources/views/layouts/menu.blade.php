@@ -31,18 +31,10 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('departments.index') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
+    <a href="{{ route('departments.index') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}{{ Request::is('masterSchemas') ? 'active' : '' }}">
         <i class="nav-icon fas fa-archive"></i>
         <p>
             Departments
-        </p>
-    </a>
-</li>
-<li class="nav-item">
-    <a href="{{ route('masterSchemas.index') }}" class="nav-link {{ Request::is('masterSchemas') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-database"></i>
-        <p>
-            Master Schema
         </p>
     </a>
 </li>
@@ -117,18 +109,18 @@
         </p>
     </a>
 </li>
-<li class="nav-item">
+{{-- <li class="nav-item">
     <a href="{{ route('acceptSalaries.index') }}" class="nav-link {{ Request::is('acceptSalaries') ? 'active' : '' }}">
         <i class="nav-icon fas fa-calculator"></i>
         <p>
             * Accept Salaries
         </p>
     </a>
-</li>
+</li> --}}
 @endrole
 
 <li class="nav-item">
-    <a href="{{ route('attendances.index') }}" class="nav-link {{ Request::is('attendances') ? 'active' : '' }}">
+    <a href="{{ route('attendances.date') }}" class="nav-link {{ Request::is('attendances') ? 'active' : '' }}">
         <i class="nav-icon fas fa-hand-paper"></i>
         <p>
             Attendances
@@ -152,6 +144,18 @@
         <i class="nav-icon fas fa-file-word"></i>
         <p>
             Submissions
+        </p>
+    </a>
+</li>
+
+<li class="nav-header">Repoting</li>
+
+<li class="nav-item">
+    <a href="{{ route('reportingEmployees.index') }}" class="nav-link {{ Request::is('reportingEmployees') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-code"></i>
+        {{-- <i class="nav-icon fas fa-file-chart-column"></i> --}}
+        <p>
+            Employee
         </p>
     </a>
 </li>

@@ -82,6 +82,14 @@
                     <a href="{{ route('salaries.indexCompany') }}" class="btn {{ Request::is('salaries/type/company') ? 'btn-info text-white' : 'btn-outline-info' }} btn-sm nav-link">Company</a>
                 </li>
             @endif
+            @if (Request::is('departments*') || Request::is('masterSchemas*'))
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('departments.index') }}" class="btn {{ Request::is('departments') ? 'btn-primary text-white' : 'btn-outline-primary' }} btn-sm nav-link">Departments</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block" style="padding-right: 10px;">
+                    <a href="{{ route('masterSchemas.index') }}" class="btn {{ Request::is('masterSchemas') ? 'btn-secondary text-white' : 'btn-outline-secondary' }} btn-sm nav-link">Master Schema</a>
+                </li>
+            @endif
         </ul>
 
         <ul class="navbar-nav ml-auto">

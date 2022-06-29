@@ -78,5 +78,12 @@ class Attendance extends Model
         'schedule_out' => 'required'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function employee()
+    {
+        return $this->belongsTo(\App\Models\Employee::class, 'id_employee');
+    }
     
 }

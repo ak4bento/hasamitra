@@ -86,3 +86,12 @@
         <option value="lainnya">Lainnya</option>
     </select>
 </div>
+
+<!-- Status Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('status', 'Status:') !!}
+    <select name="status" id="status" class="form-control">
+        <option value="reguler">Reguler</option>
+        <option value="nonreguler">Non Reguler</option>
+    </select>
+</div>

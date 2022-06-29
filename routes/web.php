@@ -63,6 +63,12 @@ Route::get('/data/salaries/organizational/{company}', [App\Http\Controllers\Orga
 
 Route::resource('admins', App\Http\Controllers\AdminController::class);
 
+Route::get('attendances/export/', [App\Http\Controllers\AttendanceController::class, 'export'])->name('attendances.export');
+
+Route::get('attendances/date/', [App\Http\Controllers\AttendanceController::class, 'date'])->name('attendances.date');
+
+Route::get('attendances/report/', [App\Http\Controllers\AttendanceController::class, 'report'])->name('attendances.report');
+
 Route::resource('attendances', App\Http\Controllers\AttendanceController::class);
 
 Route::resource('schemaBreaks', App\Http\Controllers\SchemaBreakController::class);
@@ -77,3 +83,5 @@ Route::get('submission/canceled', [App\Http\Controllers\SubmissionController::cl
 
 
 Route::resource('acceptSalaries', App\Http\Controllers\AcceptSalariesController::class);
+
+Route::resource('reportingEmployees', App\Http\Controllers\ReportingEmployeeController::class);

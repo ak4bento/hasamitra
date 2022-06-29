@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AttandancesExport;
 use App\Http\Requests\CreateAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
 use App\Repositories\AttendanceRepository;
@@ -10,12 +11,20 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendanceController extends AppBaseController
 {
     /** @var  AttendanceRepository */
     private $attendanceRepository;
 
+    // nama, 
+    // jumlah hadir, 
+    // count terlambat, 
+    // total jam terlambat, 
+    // count cepat pulang, 
+    // total jam cepat pulang, 
+    // lupa absen pulang
     public function __construct(AttendanceRepository $attendanceRepo)
     {
         $this->attendanceRepository = $attendanceRepo;
@@ -30,7 +39,7 @@ class AttendanceController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $attendances = $this->attendanceRepository->all();
+        $attendances = collect($this->attendanceRepository->all())->SortByDesc('created_at');
 
         return view('attendances.index')
             ->with('selected_company', null)
@@ -166,5 +175,38 @@ class AttendanceController extends AppBaseController
         Flash::success('Attendance deleted successfully.');
 
         return redirect(route('attendances.index'));
+    }
+
+    public function export(Request $request) 
+    {
+        return Excel::download(new AttandancesExport($request->start_date, $request->end_date), 'attandance.xlsx');
+    }
+
+    public function date()
+    {
+        return view('attendances.indexDate');
+    }
+
+    public function report(Request $request)
+    {
+        // dd($request->date);
+        $attendances = DB::table('tb_employee')
+                ->rightJoin('tb_attendance_employee', 'tb_attendance_employee.id_employee', '=', 'tb_employee.id')
+                // ->join('tb_organizational_structure74', 'tb_employee.id_organization', '=', 'tb_organizational_structure74.id')
+                ->select(
+                    'tb_employee.name',
+                    'tb_attendance_employee.id_employee',
+                    DB::raw('count(tb_attendance_employee.check_in) as total'),
+                    DB::raw("sum(DATE_FORMAT(tb_attendance_employee.check_in, '%H:%i:%s') > DATE_FORMAT(tb_attendance_employee.schedule_in, '%H:%i:%s')) as total_late"),
+                    DB::raw("sum(DATE_FORMAT(tb_attendance_employee.check_out, '%H:%i:%s') < DATE_FORMAT(tb_attendance_employee.schedule_out, '%H:%i:%s')) as total_early"),
+                    DB::raw("sum(tb_attendance_employee.check_out IS NULL) as forgeted"),
+                    DB::raw("sum(TIME_TO_SEC(IF(DATE_FORMAT(tb_attendance_employee.check_in, '%H:%i:%s') > DATE_FORMAT(tb_attendance_employee.schedule_in, '%H:%i:%s'),DATE_FORMAT(timediff(DATE_FORMAT(tb_attendance_employee.check_in, '%H:%i:%s'), DATE_FORMAT(tb_attendance_employee.schedule_in, '%H:%i:%s')), '%H:%i:%s'),'00:00:00'))) as late_diff"),
+                    DB::raw("sum(TIME_TO_SEC(IF(DATE_FORMAT(tb_attendance_employee.check_out, '%H:%i:%s') < DATE_FORMAT(tb_attendance_employee.schedule_out, '%H:%i:%s'),DATE_FORMAT(timediff(DATE_FORMAT(tb_attendance_employee.schedule_out, '%H:%i:%s'), DATE_FORMAT(tb_attendance_employee.check_out, '%H:%i:%s')), '%H:%i:%s'),'00:00:00'))) as early_diff"),
+                )
+                ->groupBy('tb_attendance_employee.id_employee')
+                ->whereBetween('tb_attendance_employee.check_in', [$request->start_date, $request->end_date])
+                ->get();
+        return view('attendances.indexReport')
+            ->with('attendances', $attendances);
     }
 }
